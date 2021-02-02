@@ -4,20 +4,42 @@ import SearchOutput from './SearchOutput';
 
 const MainApp = () => {
   const [queryValue, setQueryValue] = useState('');
+  const [queryResults, setQueryResults] = useState();
   const loaded = useRef(false);
 
+  const URL = 'http://www.recipepuppy.com/api/';
+
+  const queryAPI = (url, queryValue) => {
+    fetch('/api/?q=' + queryValue) // TODO: update with actual URL
+    .then(res => res.json())
+    .then(
+      (result) => {
+        setQueryResults(result.results);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // Query API
   useEffect(() => {
-    if(loaded.current) {
-      queryRecipePuppy();
+    if(loaded.current && queryValue) {
+      //queryAPI(URL, queryValue);
     } else {
       loaded.current = true;
     } 
   }, [queryValue]);
 
+  // Display Results
+  useEffect(() => {
+    console.log(queryResults);
+  }, [queryResults]);
+
   return (
     <div className='flex flex-col w-main-app-width max-w-screen-sm h-main-app-height max-h-screen-md shadow-lg rounded-lg bg-gray-200 py-10 px-9'>
       <SearchBar inputData={setQueryValue} />
-      <SearchOutput />
+      <SearchOutput queryResults={queryResults}/>
     </div>
   );
 }
