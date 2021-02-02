@@ -9,9 +9,24 @@ const SearchBar = props => {
   }
 
   const handleSubmit = event => {
-    props.inputData(inputData);
-    setInputData('');
+    const input = sanitizeInput(inputData);
+
+    props.inputData(input);
     event.preventDefault();
+  }
+
+  const sanitizeInput = input => {
+    let newInput = '';
+    input = input.toLowerCase();
+
+    for(let char of input) {
+      if(char === ' ') {
+        newInput += '%20';
+      } else if (/^[a-z]*$/g.test(char)) {
+        newInput += char
+      }
+    } 
+    return newInput;
   }
 
   return(
