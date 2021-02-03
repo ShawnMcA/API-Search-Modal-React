@@ -23,7 +23,7 @@ const SearchBar = props => {
       if(char === ' ') {
         newInput += '%20';
       } else if (/^[a-z]*$/g.test(char)) {
-        newInput += char
+        newInput += char;
       }
     } 
     return newInput;

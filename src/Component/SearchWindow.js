@@ -22,10 +22,17 @@ const MainApp = () => {
     );
   }
 
+  // if user sends blank form, returns no results...
+  useEffect(() => {
+    if(!queryValue) {
+      setQueryResults('');
+    }
+  }, [queryValue]);
+
   // Query API
   useEffect(() => {
     if(loaded.current && queryValue) {
-      //queryAPI(URL, queryValue);
+      queryAPI(URL, queryValue);
     } else {
       loaded.current = true;
     } 

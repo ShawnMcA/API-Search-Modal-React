@@ -7,16 +7,19 @@ const SearchOutput = props => {
   if(props.queryResults && props.queryResults.length > 0) {
     searchItems = props.queryResults.map(result => { 
       return (
-        <button key={result.title} className='flex items-center w-full p-5 hover:bg-gray-100'>
-          { result.title }
-        </button>
+        <>
+          <button key={result.title} className='flex items-center w-full p-5 focus:outline-none'>
+            { result.title }
+          </button>
+          <div key={result.title} className='flex column items-center bg-gray-100 w-full p-5'>Hello, this is the link</div>
+        </>
       );
     });
   } else {
     searchItems = (
-      <button className='flex items-center w-full p-5 hover:bg-gray-100 focus:outline-none'>
+      <div className='flex items-center w-full p-5'>
         No results...
-      </button>
+      </div>
     );
   }
 
