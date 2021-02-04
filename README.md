@@ -1,6 +1,6 @@
-# Recipe Finder - React/Tailwind
+# API Search Modal - React/Tailwind
 
-Recipe search component created with React and Tailwind CSS
+API search modal component for React and Tailwind CSS
 
 
 
