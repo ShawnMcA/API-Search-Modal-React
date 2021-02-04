@@ -1,18 +1,15 @@
 import React from 'react';
+import QueryResultItem from './QueryResultItem';
 
 const SearchOutput = props => {
 
   let searchItems;
   
+  // Render query results
   if(props.queryResults && props.queryResults.length > 0) {
     searchItems = props.queryResults.map(result => { 
       return (
-        <>
-          <button key={result.title} className='flex items-center w-full p-5 focus:outline-none'>
-            { result.title }
-          </button>
-          <div key={result.title} className='flex column items-center bg-gray-100 w-full p-5'>Hello, this is the link</div>
-        </>
+        <QueryResultItem key={result.title} title={result.title} link={result.href} ingredients={result.ingredients}/>
       );
     });
   } else {

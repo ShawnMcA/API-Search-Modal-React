@@ -4,6 +4,7 @@ import { BiSearch } from 'react-icons/bi';
 const SearchBar = props => {
   const [inputData, setInputData] = useState('');
 
+  // Input field data
   const handleInputChange = event => {
     setInputData(event.target.value);
   }
@@ -15,6 +16,7 @@ const SearchBar = props => {
     event.preventDefault();
   }
 
+  // Cleans input for query
   const sanitizeInput = input => {
     let newInput = '';
     input = input.toLowerCase();
