@@ -10,7 +10,7 @@ const MainApp = () => {
   const URL = 'http://www.recipepuppy.com/api/';
 
   const queryAPI = (url, queryValue) => {
-    fetch('/api/?q=' + queryValue) // TODO: Prepend actual url. Remove proxy from package.json
+    fetch(url + '/api/?q=' + queryValue) // TODO: Prepend actual url. Remove proxy from package.json
     .then(res => res.json())
     .then(
       (result) => {
