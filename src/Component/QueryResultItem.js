@@ -17,7 +17,16 @@ const QueryResultItem = props => {
         <p className='mt-4 mb-4'>Recipe link:</p>
         <a className='mb-8 text-gray-500 text-sm' href={props.link} rel="noopener noreferrer" target='_blank'>{ props.link }</a>
         <p className='mt-4 mb-4'>Ingredients:</p>
-        <p className='mb-4 text-gray-500 text-sm'>{props.ingredients}</p>
+        { props.ingredients.map(step => {
+          return step.ingredients.map(ingredient => {
+            return(
+              <p key={ingredient.name} className='mb-4 text-gray-500 text-sm'>
+                {ingredient.name}
+              </p>
+            )
+          });
+        })}
+        
       </div>
     </div>
   );
