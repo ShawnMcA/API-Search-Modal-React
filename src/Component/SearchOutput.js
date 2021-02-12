@@ -8,8 +8,9 @@ const SearchOutput = props => {
   // Render query results
   if(props.queryResults && props.queryResults.length > 0) {
     searchItems = props.queryResults.map(result => { 
+      console.log(result);
       return (
-        <QueryResultItem key={result.title} title={result.title} link={result.href} ingredients={result.ingredients}/>
+        <QueryResultItem key={result.title} title={result.title} link={result.sourceUrl} ingredients={result.analyzedInstructions[0].steps}/>
       );
     });
   } else {

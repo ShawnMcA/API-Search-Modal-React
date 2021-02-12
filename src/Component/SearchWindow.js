@@ -7,19 +7,17 @@ const MainApp = () => {
   const [queryResults, setQueryResults] = useState();
   const loaded = useRef(false);
 
-  const URL = 'http://www.recipepuppy.com/api/';
+  const URL = 'https://api.spoonacular.com/recipes/complexSearch';
 
   const queryAPI = (url, queryValue) => {
-    fetch(url + '/api/?q=' + queryValue) // TODO: Prepend actual url. Remove proxy from package.json
+    fetch(url + '?query=' + queryValue + '&addRecipeInformation=true&instructionsRequired=true&apiKey=' + process.env.REACT_APP_API_KEY) // TODO: Prepend actual url. Remove proxy from package.json
     .then(res => res.json())
-    .then(
-      (result) => {
+    .then(result => {
         setQueryResults(result.results);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   }
 
   // if user sends blank form, returns no results...
